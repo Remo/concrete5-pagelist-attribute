@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+    <table name="atRemoPagelistAttributeSettings">
+        <field name="akID" type="I" size="10">
+            <key/>
+            <unsigned />
+        </field>      
+        <field name="selectedPageTypes" type="C" size="255">
+        </field>     
+    </table>    
+    <table name="akRemoPagelistAttributeSelectedPages">
+        <field name="avID" type="I" size="10">
+            <key/>
+            <unsigned />
+        </field>      
+        <field name="cID" type="I" size="10">
+            <key/>
+            <unsigned />
+        </field>     
+    </table> 
+</schema>

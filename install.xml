@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+Make sure you add new content at the top of the list, upgrade fails as soon as
+it encounters an element which is already installed
+-->
+<concrete5-cif version="1.0">    
+    <attributetypes>
+        <attributetype handle="remo_page_list_attribute" package="remo_page_list_attribute">
+            <categories>
+                <category handle="collection"/>
+                <category handle="user"/>
+                <category handle="file"/>
+            </categories>
+        </attributetype>
+    </attributetypes>    
+</concrete5-cif>
