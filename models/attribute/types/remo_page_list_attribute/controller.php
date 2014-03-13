@@ -106,7 +106,13 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 	 * attribute category entries.
 	 */
 	public function search() {
-		$this->load();
+		$this->load();                
+                
+                $selectedPages = $this->request('atPageID');
+		if (!is_array($selectedPages)) {
+			$selectedPages = array();
+		}
+		$this->set('selectedPages', $selectedPages);
 	}
 
 	/**
@@ -118,8 +124,14 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 		$selectedPageIDs = $this->request('atPageID');
 		$db = Loader::db();
 
-		if (is_array($selectedPageIDs)) {
-			$list->filter(false, '(p1.cID IN (' . join(',', $selectedPageIDs) . '))');
+		if (is_array($selectedPageIDs)) {                    
+			$list->filter(false, '(EXISTS (
+                                SELECT 1 FROM akRemoPagelistAttributeSelectedPages rpasp 
+                                INNER JOIN CollectionAttributeValues cav ON cav.avID=rpasp.avID
+                                WHERE rpasp.cID IN ('  . join(',', $selectedPageIDs) . ') 
+                                AND cav.cID=cv.cID
+                                AND cav.cvID=cv.cvID 
+                        ))');
 		}
 		return $list;
 	}
