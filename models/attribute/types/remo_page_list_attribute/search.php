@@ -6,18 +6,25 @@ $pl = new PageList();
 // filter by selected page types
 $selectedPageTypes = preg_split('[,]', $akSelectedPageTypes);
 if (is_array($selectedPageTypes) && !empty($selectedPageTypes)) {
-	$selectedPageTypesString = join(',', $selectedPageTypes);
-	$pl->filter(false, "pt.ctID in ({$selectedPageTypesString})");
+    $selectedPageTypesString = join(',', $selectedPageTypes);
+    $pl->filter(false, "pt.ctID in ({$selectedPageTypesString})");
 }
 
 $pages = $pl->get(0);
 ?>
 
-<div>
-	<?php foreach ($pages as $page) { ?>
-		<label for="page_<?php echo $page->getCollectionID() ?>">
-			<input <?php echo in_array($page->getCollectionID(), $selectedPages) ? ' checked="checked" ' : '' ?> style="display: inline;" id="page_<?php echo $page->getCollectionID() ?>" type="checkbox" name="<?=$this->field('atPageID')?>[]" value="<?php echo $page->getCollectionID() ?>"/>
-			<?php echo $page->getCollectionName() ?>
-		</label>
-	<?php } ?>
-</div>
+<?php if ($akDisplayDropDown) { ?>
+    <select name="<?php echo $this->field('atPageID') ?>[]" >
+        <option value=""><?php echo t('All') ?></option>
+        <?php foreach ($pages as $page) { ?>
+        <option value="<?php echo $page->getCollectionID() ?>" <?php if (in_array($page->getCollectionID(), $selectedPages)) { ?> selected <?php } ?>><?php echo $page->getCollectionName() ?></option>
+        <?php } ?>
+    </select>
+<?php } else { ?>
+    <?php foreach ($pages as $page) { ?>
+        <label for="page_<?php echo $page->getCollectionID() ?>">
+            <input <?php echo in_array($page->getCollectionID(), $selectedPages) ? ' checked="checked" ' : '' ?> style="display: inline;" id="page_<?php echo $page->getCollectionID() ?>" type="checkbox" name="<?= $this->field('atPageID') ?>[]" value="<?php echo $page->getCollectionID() ?>"/>
+            <?php echo $page->getCollectionName() ?>
+        </label>
+    <?php } ?>
+<?php } ?>

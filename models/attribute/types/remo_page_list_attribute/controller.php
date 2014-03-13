@@ -72,6 +72,7 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 		// now we have a collection attribute key object above.
 		$db->Replace(self::TABLE_SETTINGS, array(
 		    'akID' => $ak->getAttributeKeyID(),
+                    'displayDropDown' => $data['displayDropDown'],
 		    'selectedPageTypes' => $selectedPageTypes), array('akID'), true);
 	}
 
