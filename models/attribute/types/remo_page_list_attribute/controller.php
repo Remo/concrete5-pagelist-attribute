@@ -12,7 +12,9 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 	}
 
 	public function getValue() {
-		return 'aa';
+		$db = Loader::db();
+		$selectedPages = $db->GetCol('SELECT cID FROM ' . self::TABLE_VALUES . ' WHERE avID=?', array($this->getAttributeValueID()));
+		return $selectedPages;
 	}
 
 	/**
@@ -81,7 +83,7 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 
 		// get selected pages
 		$db = Loader::db();
-		$selectedPages = $db->GetCol('SELECT cID FROM ' . self::TABLE_VALUES . ' WHERE avID=?', array($this->getAttributeValueID()));
+		$selectedPages = $this->getValue();
 		$this->set('selectedPages', $selectedPages);
 	}
 
@@ -94,8 +96,8 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 
 		$db->Execute('DELETE FROM ' . self::TABLE_VALUES . ' WHERE avID=?', array($this->getAttributeValueID()));
 
-		if (array_key_exists('pageID', $_REQUEST) && is_array($_REQUEST['pageID'])) {
-			foreach ($_REQUEST['pageID'] as $cID) {
+		if (array_key_exists('pageID', $data) && is_array($data['pageID'])) {
+			foreach ($data['pageID'] as $cID) {
 				$db->Execute('INSERT INTO ' . self::TABLE_VALUES . ' (avID, cID) VALUES (?,?)', array($this->getAttributeValueID(), $cID));
 			}
 		}
