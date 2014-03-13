@@ -16,7 +16,7 @@ $pages = $pl->get(0);
 <div>
 	<?php foreach ($pages as $page) { ?>
 		<label for="page_<?php echo $page->getCollectionID() ?>">
-			<input <?php echo in_array($page->getCollectionID(), $selectedPages) ? ' checked="checked" ' : '' ?> style="display: inline;" id="page_<?php echo $page->getCollectionID() ?>" type="checkbox" name="<?=$this->field('atPageID')?>[]" value="<?php echo $page->getCollectionID() ?>"/>
+			<input style="display: inline;" id="page_<?php echo $page->getCollectionID() ?>" type="checkbox" name="<?=$this->field('atPageID')?>[]" value="<?php echo $page->getCollectionID() ?>"/>
 			<?php echo $page->getCollectionName() ?>
 		</label>
 	<?php } ?>
