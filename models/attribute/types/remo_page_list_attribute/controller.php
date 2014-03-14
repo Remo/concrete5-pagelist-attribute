@@ -7,8 +7,23 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 	const TABLE_SETTINGS = 'atRemoPagelistAttributeSettings';
 	const TABLE_VALUES = 'akRemoPagelistAttributeSelectedPages';
 
+	protected $searchIndexFieldDefinition = 'X NULL';
+
+	public function getSearchIndexValue() {
+		$v = $this->getValue();
+                return join(',', $v);
+	}
+
 	public function getDisplayValue() {
-		return 'display';
+		$v = $this->getValue();
+                if (is_array($v)) {
+                    echo '<ul>';
+                    foreach ($v as $cID) {
+                        $page = Page::getByID($cID);
+                        echo '<li><a href="' . Loader::helper('navigation')->getLinkToCollection($page) . '">' . $page->getCollectionName() . '</a></li>';
+                    }
+                    echo '<ul>';
+                }
 	}
 
 	public function getValue() {
@@ -124,10 +139,10 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 	 * @return DatabaseItemList
 	 */
 	public function searchForm($list) {
-		$selectedPageIDs = $this->request('atPageID');
+		$selectedPageIDs = array_filter($this->request('atPageID'));
 		$db = Loader::db();
 
-		if (is_array($selectedPageIDs)) {                    
+		if (is_array($selectedPageIDs) && !empty($selectedPageIDs)) {                    
 			$list->filter(false, '(EXISTS (
                                 SELECT 1 FROM akRemoPagelistAttributeSelectedPages rpasp 
                                 INNER JOIN CollectionAttributeValues cav ON cav.avID=rpasp.avID
