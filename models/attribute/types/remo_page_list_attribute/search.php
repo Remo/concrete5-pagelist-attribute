@@ -4,7 +4,7 @@ defined('C5_EXECUTE') or die('Access Denied.');
 $pl = new PageList();
 
 // filter by selected page types
-$selectedPageTypes = preg_split('[,]', $akSelectedPageTypes);
+$selectedPageTypes = preg_split('[,]', $akSelectedPageTypes, PREG_SPLIT_NO_EMPTY);
 if (is_array($selectedPageTypes) && !empty($selectedPageTypes)) {
     $selectedPageTypesString = join(',', $selectedPageTypes);
     $pl->filter(false, "pt.ctID in ({$selectedPageTypesString})");
