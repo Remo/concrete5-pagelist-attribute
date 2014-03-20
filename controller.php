@@ -6,7 +6,7 @@ class RemoPageListAttributePackage extends Package {
 
 	protected $pkgHandle = 'remo_page_list_attribute';
 	protected $appVersionRequired = '5.6.2.1';
-	protected $pkgVersion = '0.0.5';
+	protected $pkgVersion = '0.0.6';
 
 	public function getPackageDescription() {
 		return t('Adds an attribute where you can select pages.');
