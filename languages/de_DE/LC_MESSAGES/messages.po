@@ -1,0 +1,61 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pagelist attribute\n"
+"POT-Creation-Date: 2014-03-14 16:15+0100\n"
+"PO-Revision-Date: 2014-03-14 16:17+0100\n"
+"Last-Translator: Remo Laubacher <remo.laubacher@gmail.com>\n"
+"Language-Team: Remo Laubacher <remo.laubacher@gmail.com>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: t\n"
+"X-Poedit-SearchPath-0: C:\\Work\\concrete5-pagelist-attribute\n"
+
+#: C:\Work\concrete5-pagelist-attribute/blocks/remo_list_attribute_pages/controller.php:18
+msgid "Lists pages connected to the current page."
+msgstr "Zeigt Seiten welche mit der aktuellen Seite verknüpft sind."
+
+#: C:\Work\concrete5-pagelist-attribute/blocks/remo_list_attribute_pages/controller.php:22
+msgid "Connected Page List"
+msgstr "Verknüpfte Seiten"
+
+#: C:\Work\concrete5-pagelist-attribute/blocks/remo_list_attribute_pages/form_setup_html.php:9
+msgid "Attribute"
+msgstr "Attribut"
+
+#: C:\Work\concrete5-pagelist-attribute/blocks/remo_list_attribute_pages/form_setup_html.php:12
+msgid "Attribute to display"
+msgstr "Attribute welche angezeigt werden sollen"
+
+#: C:\Work\concrete5-pagelist-attribute/controller.php:12
+msgid "Adds an attribute where you can select pages."
+msgstr "Attribut um aus einer Liste von Seiten auszuwählen."
+
+#: C:\Work\concrete5-pagelist-attribute/controller.php:16
+msgid "Pagelist Attribute"
+msgstr "Seitenlisten-Attribut"
+
+#: C:\Work\concrete5-pagelist-attribute/models/attribute/types/remo_page_list_attribute/search.php:18
+msgid "All"
+msgstr "Alle"
+
+#: C:\Work\concrete5-pagelist-attribute/models/attribute/types/remo_page_list_attribute/type_form.php:7
+msgid "Select Options"
+msgstr "Optionen"
+
+#: C:\Work\concrete5-pagelist-attribute/models/attribute/types/remo_page_list_attribute/type_form.php:10
+msgid "Page Type"
+msgstr "Seitentyp"
+
+#: C:\Work\concrete5-pagelist-attribute/models/attribute/types/remo_page_list_attribute/type_form.php:26
+msgid "Display Drop-Down"
+msgstr "Auswahlliste anzeigen"
+
+#: C:\Work\concrete5-pagelist-attribute/models/attribute/types/remo_page_list_attribute/type_form.php:32
+msgid "Always display drop down in search form."
+msgstr "Auswahlliste in Suchformular anzeigen"

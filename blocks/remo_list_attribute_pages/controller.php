@@ -37,4 +37,27 @@ class RemoListAttributePagesBlockController extends BlockController {
 		$this->set('pages', $pages);
 	}
 
+	public function edit() {
+		$c = Page::getCurrentPage();
+		if ($c->isMasterCollection()) {
+			$attributes = AttributeKey::getList('collection');
+		} else {
+			$attributes = $c->getSetCollectionAttributes();
+		}
+
+		// filter non page list attributes
+		$availableAttributes = array();
+		foreach ($attributes as $attribute) {
+			if ($attribute->getAttributeType()->getAttributeTypeHandle() == 'remo_page_list_attribute') {
+				$availableAttributes[] = $attribute;
+			}
+		}
+
+		$this->set('availableAttributes', $availableAttributes);
+	}
+
+	public function add() {
+		$this->edit();
+	}
+
 }
