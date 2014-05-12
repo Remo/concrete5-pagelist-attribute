@@ -112,7 +112,7 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 
 		$db->Execute('DELETE FROM ' . self::TABLE_VALUES . ' WHERE avID=?', array($this->getAttributeValueID()));
 
-		if (array_key_exists('pageID', $data) && is_array($data['pageID'])) {
+		if (is_array($data['pageID']) && array_key_exists('pageID', $data)) {
 			foreach ($data['pageID'] as $cID) {
 				$db->Execute('INSERT INTO ' . self::TABLE_VALUES . ' (avID, cID) VALUES (?,?)', array($this->getAttributeValueID(), $cID));
 			}
