@@ -3,6 +3,9 @@ defined('C5_EXECUTE') or die('Access Denied.');
 
 $pl = new PageList();
 
+// sort by page name
+$pl->sortByName();
+
 // filter by selected page types
 $selectedPageTypes = preg_split('[,]', $akSelectedPageTypes);
 if (is_array($selectedPageTypes) && !empty($selectedPageTypes)) {
