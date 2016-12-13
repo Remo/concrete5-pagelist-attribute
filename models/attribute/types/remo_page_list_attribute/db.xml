@@ -7,6 +7,7 @@
         </field>      
         <field name="selectedPageTypes" type="C" size="255"></field>     
         <field name="displayDropDown" type="I" size="1"></field>     
+        <field name="displayMultilingualSection" type="I" size="255"></field>
     </table>    
     <table name="akRemoPagelistAttributeSelectedPages">
         <field name="avID" type="I" size="10">
