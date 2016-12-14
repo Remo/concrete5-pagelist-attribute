@@ -58,12 +58,24 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 	 * Display type form shown when editing the attribute
 	 */
 	public function type_form() {
+                // detect if the multiligual package is installed
+                $remoPageListAttribute = Package::getByHandle('multilingual');
+                $multilingualSections = [];
+                if (is_object($remoPageListAttribute)) {
+                    $mSectionsTemp = array_flip(MultilingualSection::getIDLIst());
+                    $multilingualSections[0] = t('No language selected');
+                    foreach ($mSectionsTemp as $msID => $dummy) {
+                        $multilingualSections[$msID] = MultilingualSection::getByID($msID)->getLanguageText();
+                    }
+                }
+                
 		$collectionTypes = CollectionType::getList();
 
 		$this->load();
 
 		$this->set('collectionTypes', $collectionTypes);
 		$this->set('form', Loader::helper('form'));
+                $this->set('multilingualSections', $multilingualSections);
 	}
 
 	public function deleteKey() {
@@ -88,6 +100,7 @@ class RemoPageListAttributeAttributeTypeController extends AttributeTypeControll
 		$db->Replace(self::TABLE_SETTINGS, array(
 		    'akID' => $ak->getAttributeKeyID(),
                     'displayDropDown' => $data['displayDropDown'],
+                    'displayMultilingualSection' => $data['displayMultilingualSection'],
 		    'selectedPageTypes' => $selectedPageTypes), array('akID'), true);
 	}
 
