@@ -12,8 +12,8 @@ if (is_array($selectedPageTypes) && !empty($selectedPageTypes)) {
 	$selectedPageTypesString = join(',', $selectedPageTypes);
 	$pl->filter(false, "pt.ctID in ({$selectedPageTypesString})");
 }
-if (!empty($displayMultilingualSection)) {
-    $ms = MultilingualSection::getByID($displayMultilingualSection);
+if (!empty($akDisplayMultilingualSection)) {
+    $ms = MultilingualSection::getByID($akDisplayMultilingualSection);
     if (is_object($ms)) {
         $pl->addToQuery(' left join MultilingualPageRelations mpr on(p1.cID = mpr.cID)');
         $pl->filter('mpr.mpLocale', $ms->getLocale());

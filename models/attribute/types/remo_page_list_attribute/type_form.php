@@ -25,7 +25,7 @@ $selectedPageTypes = preg_split('[,]', $akSelectedPageTypes);
         <div class="clearfix">
             <label><?php echo t('Language'); ?></label>
             <div class="input">
-                <?= $form->select('displayMultilingualSection', $multilingualSections, 0); ?>
+                <?= $form->select('displayMultilingualSection', $multilingualSections, $akDisplayMultilingualSection); ?>
             </div>
         </div>
     <?php endif; ?>
